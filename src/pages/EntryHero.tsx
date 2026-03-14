@@ -88,6 +88,7 @@ const EntryHero: React.FC = () => {
           <SplineScene
             url={SPLINE_ENTRY_URL}
             ariaLabel=""
+            variant="entry"
             className="w-full h-full"
           />
         </div>

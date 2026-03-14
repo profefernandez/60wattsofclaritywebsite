@@ -13,10 +13,12 @@ export function sanitizeHTML(dirty: string): string {
 }
 
 /**
- * Sanitize plain text (removes all HTML tags).
+ * Sanitize plain text — uses DOMPurify with no allowed tags to strip all HTML.
+ * This avoids regex-based sanitization which can be bypassed with malformed tags.
  */
 export function sanitizeText(input: string): string {
-  return input.replace(/<[^>]*>/g, '').trim();
+  if (typeof window === 'undefined') return input.trim();
+  return DOMPurify.sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
 }
 
 /**

@@ -175,6 +175,7 @@ const HeroSection: React.FC = () => {
             <SplineScene
               url={SPLINE_HERO_URL}
               ariaLabel="3D neural network visualization representing AI connections"
+              variant="hero"
               className="w-full h-full rounded-2xl"
             />
           </motion.div>
