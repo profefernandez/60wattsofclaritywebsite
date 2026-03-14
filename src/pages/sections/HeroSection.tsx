@@ -65,11 +65,19 @@ const HeroSection: React.FC = () => {
     <section
       id="hero"
       aria-label="Hero — About 60 Watts of Clarity"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden hero-bg"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+      style={{ background: '#000000' }}
     >
       {/* Background particles */}
       {!reduceMotion && (
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Ambient radial gradients */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.05) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(129,140,248,0.04) 0%, transparent 50%)',
+            }}
+          />
           {PARTICLES.map((p, i) => (
             <div
               key={i}
@@ -102,7 +110,7 @@ const HeroSection: React.FC = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-[1.05] mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.05] mb-6 tracking-tight"
             >
               <span className="text-white">Illuminating the</span>
               <br />

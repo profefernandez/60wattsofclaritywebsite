@@ -37,14 +37,15 @@ const WorkshopsSection: React.FC = () => {
     <section
       id="workshops"
       aria-labelledby="workshops-heading"
-      className="py-24 lg:py-32 bg-[#0d0e22]"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{ background: '#050505' }}
     >
       <div className="section-container">
         <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
           <span className="section-eyebrow">Training Programs</span>
           <h2
             id="workshops-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight"
           >
             Workshops &{' '}
             <span className="gradient-text-warm">Training</span>
@@ -68,7 +69,7 @@ const WorkshopsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.1 }}
-              className="glass-card border border-white/10 hover:border-sky-400/30 transition-all duration-300 overflow-hidden"
+              className="glass-card border border-white/[0.06] hover:border-sky-400/20 transition-all duration-300 overflow-hidden"
             >
               <div className="p-6">
                 {/* Header */}
@@ -79,7 +80,7 @@ const WorkshopsSection: React.FC = () => {
                     >
                       {workshop.level}
                     </span>
-                    <h3 className="text-white font-heading font-bold text-xl leading-snug">
+                    <h3 className="text-white font-heading font-medium text-xl leading-snug tracking-tight">
                       {workshop.title}
                     </h3>
                   </div>

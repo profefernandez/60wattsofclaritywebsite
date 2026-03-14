@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
       role="banner"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0a0b1e]/95 backdrop-blur-md border-b border-white/10 shadow-xl shadow-black/20'
+          ? 'bg-black/90 backdrop-blur-xl border-b border-white/[0.06] shadow-xl shadow-black/40'
           : 'bg-transparent'
       }`}
     >
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center">
               <BoltIcon className="w-4 h-4 text-white" />
             </div>
-            <span className="font-heading font-bold text-lg leading-none">
+            <span className="font-heading font-light text-lg leading-none tracking-wide">
               <span className="text-sky-400">60 Watts</span>
               <br />
               <span className="text-xs font-body font-normal text-slate-300 tracking-widest uppercase">
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden border-t border-white/10 bg-[#0a0b1e]/98 backdrop-blur-lg overflow-hidden"
+            className="md:hidden border-t border-white/[0.06] bg-black/95 backdrop-blur-xl overflow-hidden"
           >
             <div className="section-container py-4">
               <ul role="list" className="list-none m-0 p-0 space-y-1 mb-4">

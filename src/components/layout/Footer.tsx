@@ -31,7 +31,8 @@ const Footer: React.FC = () => {
   return (
     <footer
       role="contentinfo"
-      className="bg-[#08091a] border-t border-white/10 pt-16 pb-8"
+      className="border-t border-white/[0.06] pt-16 pb-8"
+      style={{ background: '#000000' }}
     >
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -45,7 +46,7 @@ const Footer: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center">
                 <BoltIcon />
               </div>
-              <span className="font-heading font-bold text-white">60 Watts of Clarity</span>
+              <span className="font-heading font-light text-white tracking-wide">60 Watts of Clarity</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
               {COMPANY.tagline}. Ethical AI education for social workers and communities.

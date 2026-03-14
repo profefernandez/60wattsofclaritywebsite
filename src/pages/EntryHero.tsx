@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { motion, type Variants } from 'framer-motion';
 import SplineScene from '../components/ui/SplineScene';
+import PageTransition from '../components/ui/PageTransition';
 import { COMPANY } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/useScrollAnimation';
 
@@ -78,12 +79,13 @@ const EntryHero: React.FC = () => {
         Skip to main content
       </a>
 
-      <div className="relative min-h-screen flex flex-col overflow-hidden hero-bg">
+      <PageTransition>
+      <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: '#000000' }}>
         {/* Full-screen Spline 3D background (decorative) */}
         <div
           className="absolute inset-0 z-0"
           aria-hidden="true"
-          style={{ opacity: 0.35 }}
+          style={{ opacity: 0.4 }}
         >
           <SplineScene
             url={SPLINE_ENTRY_URL}
@@ -93,13 +95,23 @@ const EntryHero: React.FC = () => {
           />
         </div>
 
+        {/* Ambient radial gradients for cinematic depth */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-[1] pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at 30% 20%, rgba(56,189,248,0.06) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(251,191,36,0.04) 0%, transparent 50%)',
+          }}
+        />
+
         {/* Overlay gradient for text readability — ensures WCAG AA+ contrast */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-1"
+          className="absolute inset-0 z-[2]"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(10,11,30,0.6) 0%, rgba(10,11,30,0.45) 40%, rgba(10,11,30,0.75) 100%)',
+              'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.7) 100%)',
           }}
         />
 
@@ -119,7 +131,7 @@ const EntryHero: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center shadow-lg shadow-sky-500/40">
                 <BoltIcon />
               </div>
-              <span className="font-heading font-bold text-xl text-white tracking-tight">
+              <span className="font-heading font-light text-xl text-white tracking-wide">
                 60 Watts of Clarity
               </span>
             </motion.div>
@@ -142,7 +154,7 @@ const EntryHero: React.FC = () => {
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.05] mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-light text-white leading-[1.05] mb-6 tracking-tight"
               >
                 Illuminating the Path{' '}
                 <br className="hidden sm:block" />
@@ -172,8 +184,8 @@ const EntryHero: React.FC = () => {
                   transition={{ duration: 0.2 }}
                   className={`relative glass-card border transition-all duration-300 overflow-hidden cursor-pointer ${
                     hoveredChoice === 'A'
-                      ? 'border-sky-400/60 shadow-2xl shadow-sky-500/20'
-                      : 'border-white/15'
+                      ? 'border-sky-400/40 shadow-2xl shadow-sky-500/15'
+                      : 'border-white/[0.06]'
                   }`}
                 >
                   {/* Glow bg */}
@@ -188,10 +200,10 @@ const EntryHero: React.FC = () => {
                       <GlobeIcon />
                     </div>
 
-                    <span className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2">
+                    <span className="text-xs font-medium uppercase tracking-[0.2em] text-sky-400 mb-2">
                       Option A
                     </span>
-                    <h2 className="text-white font-heading font-bold text-xl mb-3 leading-snug">
+                    <h2 className="text-white font-heading font-medium text-xl mb-3 leading-snug tracking-tight">
                       Explore Full Website
                     </h2>
                     <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -201,7 +213,7 @@ const EntryHero: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => navigate('/home')}
-                      className="w-full px-6 py-3 rounded-xl bg-sky-400 text-[#0a0b1e] font-bold hover:bg-sky-300 active:bg-sky-500 transition-colors shadow-lg shadow-sky-400/30 cursor-pointer text-base focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b1e] focus-visible:outline-none"
+                      className="w-full px-6 py-3 rounded-xl bg-sky-400 text-black font-semibold hover:bg-sky-300 active:bg-sky-500 transition-colors shadow-lg shadow-sky-400/20 cursor-pointer text-base focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none"
                       aria-label="Explore the full 60 Watts of Clarity website"
                     >
                       Explore Website
@@ -217,8 +229,8 @@ const EntryHero: React.FC = () => {
                   transition={{ duration: 0.2 }}
                   className={`relative glass-card border transition-all duration-300 overflow-hidden cursor-pointer ${
                     hoveredChoice === 'B'
-                      ? 'border-amber-400/60 shadow-2xl shadow-amber-500/20'
-                      : 'border-white/15'
+                      ? 'border-amber-400/40 shadow-2xl shadow-amber-500/15'
+                      : 'border-white/[0.06]'
                   }`}
                 >
                   {/* Glow bg */}
@@ -233,10 +245,10 @@ const EntryHero: React.FC = () => {
                       <SnapIcon />
                     </div>
 
-                    <span className="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">
+                    <span className="text-xs font-medium uppercase tracking-[0.2em] text-amber-400 mb-2">
                       Option B
                     </span>
-                    <h2 className="text-white font-heading font-bold text-xl mb-3 leading-snug">
+                    <h2 className="text-white font-heading font-medium text-xl mb-3 leading-snug tracking-tight">
                       Quick Overview + Chat
                     </h2>
                     <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -246,7 +258,7 @@ const EntryHero: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => navigate('/snapshot')}
-                      className="w-full px-6 py-3 rounded-xl bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 active:bg-amber-500 transition-colors shadow-lg shadow-amber-400/30 cursor-pointer text-base focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b1e] focus-visible:outline-none"
+                      className="w-full px-6 py-3 rounded-xl bg-amber-400 text-black font-semibold hover:bg-amber-300 active:bg-amber-500 transition-colors shadow-lg shadow-amber-400/20 cursor-pointer text-base focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none"
                       aria-label="View strategic snapshot and chat with AI assistant"
                     >
                       Quick Overview
@@ -269,13 +281,14 @@ const EntryHero: React.FC = () => {
         {/* Scroll hint */}
         <div
           aria-hidden="true"
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-slate-500 text-xs"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-slate-500 text-xs tracking-widest"
         >
-          <div className="h-px w-12 bg-white/10" />
+          <div className="h-px w-12 bg-white/[0.06]" />
           {COMPANY.tagline}
-          <div className="h-px w-12 bg-white/10" />
+          <div className="h-px w-12 bg-white/[0.06]" />
         </div>
       </div>
+      </PageTransition>
     </HelmetProvider>
   );
 };
