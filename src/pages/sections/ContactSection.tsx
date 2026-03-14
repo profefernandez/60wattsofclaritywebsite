@@ -77,7 +77,8 @@ const ContactSection: React.FC = () => {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="py-24 lg:py-32 bg-[#0a0b1e] relative"
+      className="py-24 lg:py-32 relative"
+      style={{ background: '#000000' }}
     >
       <div
         aria-hidden="true"
@@ -93,7 +94,7 @@ const ContactSection: React.FC = () => {
           <span className="section-eyebrow">Get in Touch</span>
           <h2
             id="contact-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight"
           >
             Ready to Bring Ethical{' '}
             <span className="gradient-text-primary">AI Education</span>
@@ -119,7 +120,7 @@ const ContactSection: React.FC = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-heading font-bold text-white mb-2">
+                <h3 className="text-2xl font-heading font-medium text-white mb-2 tracking-tight">
                   Message Received!
                 </h3>
                 <p className="text-slate-400">
@@ -260,7 +261,7 @@ const ContactSection: React.FC = () => {
           <div className="lg:col-span-2 space-y-6">
             <AnimatedSection delay={0.2}>
               <div className="glass-card border border-white/10 p-6 space-y-5">
-                <h3 className="text-white font-heading font-bold text-xl mb-4">
+                <h3 className="text-white font-heading font-medium text-xl mb-4 tracking-tight">
                   Direct Contact
                 </h3>
                 {[
@@ -302,7 +303,7 @@ const ContactSection: React.FC = () => {
 
             <AnimatedSection delay={0.35}>
               <div className="glass-card border border-amber-400/20 p-6">
-                <h3 className="text-white font-heading font-bold text-lg mb-2">
+                <h3 className="text-white font-heading font-medium text-lg mb-2">
                   Response Time
                 </h3>
                 <p className="text-slate-400 text-sm">
@@ -314,7 +315,7 @@ const ContactSection: React.FC = () => {
 
             <AnimatedSection delay={0.5}>
               <div className="glass-card border border-white/10 p-6">
-                <h3 className="text-white font-heading font-bold text-lg mb-3">
+                <h3 className="text-white font-heading font-medium text-lg mb-3">
                   Quick Chat
                 </h3>
                 <p className="text-slate-400 text-sm mb-4">

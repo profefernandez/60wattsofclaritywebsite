@@ -11,7 +11,8 @@ const LibrarySection: React.FC = () => {
     <section
       id="library"
       aria-labelledby="library-heading"
-      className="py-24 lg:py-32 bg-[#0d0e22] relative"
+      className="py-24 lg:py-32 relative"
+      style={{ background: '#050505' }}
     >
       <div
         aria-hidden="true"
@@ -27,7 +28,7 @@ const LibrarySection: React.FC = () => {
           <span className="section-eyebrow">Knowledge Hub</span>
           <h2
             id="library-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight"
           >
             60 Watts Intelligence{' '}
             <span className="gradient-text-primary">Library</span>
@@ -52,13 +53,13 @@ const LibrarySection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.08 }}
-              className="glass-card border border-white/10 hover:border-violet-400/30 p-6 transition-all duration-300 hover:translate-y-[-2px] group"
+              className="glass-card border border-white/[0.06] hover:border-violet-400/20 p-6 transition-all duration-300 hover:translate-y-[-2px] group"
             >
               <div className="text-3xl mb-4" aria-hidden="true">
                 {resource.icon}
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="text-white font-heading font-bold text-lg leading-snug">
+                <h3 className="text-white font-heading font-medium text-lg leading-snug tracking-tight">
                   {resource.title}
                 </h3>
               </div>
@@ -103,7 +104,7 @@ const LibrarySection: React.FC = () => {
               <div className="absolute bottom-0 right-1/4 w-48 h-48 rounded-full bg-violet-400/10 blur-3xl" />
             </div>
             <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl font-heading font-light text-white mb-4 tracking-tight">
                 Access the Full Library — Free
               </h3>
               <p className="text-slate-300 mb-8 max-w-xl mx-auto">
@@ -113,7 +114,7 @@ const LibrarySection: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   type="button"
-                  className="px-8 py-4 rounded-lg bg-sky-400 text-[#0a0b1e] font-bold hover:bg-sky-300 transition-colors shadow-lg shadow-sky-400/25 cursor-pointer text-base"
+                  className="px-8 py-4 rounded-lg bg-sky-400 text-black font-semibold hover:bg-sky-300 transition-colors shadow-lg shadow-sky-400/20 cursor-pointer text-base"
                   aria-label="Create your free library account"
                 >
                   Create Free Account

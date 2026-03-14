@@ -1,6 +1,10 @@
 import React from 'react';
 import AnimatedSection from '../../components/ui/AnimatedSection';
+import SplineScene from '../../components/ui/SplineScene';
 import { COMPANY } from '../../data/content';
+
+// Public Spline scene — abstract light sculpture for company identity
+const SPLINE_ABOUT_URL = 'https://prod.spline.design/kZDDjO5HlWTakXM6/scene.splinecode';
 
 const VALUES = [
   {
@@ -65,16 +69,34 @@ const AboutSection: React.FC = () => {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-24 lg:py-32 bg-[#0d0e22]"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{ background: '#050505' }}
     >
-      <div className="section-container">
+      {/* Ambient gradient */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.04) 0%, transparent 60%)',
+        }}
+      />
+
+      {/* Decorative 3D scene — company identity */}
+      <div
+        className="absolute top-0 right-0 w-1/3 h-full opacity-20 pointer-events-none hidden lg:block"
+        aria-hidden="true"
+      >
+        <SplineScene url={SPLINE_ABOUT_URL} ariaLabel="" variant="default" className="w-full h-full" />
+      </div>
+
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left: Story */}
           <AnimatedSection>
             <span className="section-eyebrow">Our Story</span>
             <h2
               id="about-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-6 tracking-tight"
             >
               Why{' '}
               <span className="gradient-text-primary">60 Watts?</span>
@@ -105,7 +127,7 @@ const AboutSection: React.FC = () => {
           {/* Right: Values */}
           <AnimatedSection delay={0.2}>
             <span className="section-eyebrow">Our Values</span>
-            <h3 className="text-2xl font-heading font-bold text-white mb-8">
+            <h3 className="text-2xl font-heading font-light text-white mb-8 tracking-tight">
               What drives everything we do
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

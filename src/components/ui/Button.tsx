@@ -16,11 +16,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-sky-400 text-[#0a0b1e] hover:bg-sky-300 active:bg-sky-500 shadow-lg shadow-sky-400/25 font-bold',
+    'bg-sky-400 text-black hover:bg-sky-300 active:bg-sky-500 shadow-lg shadow-sky-400/20 font-semibold',
   secondary:
-    'bg-amber-400 text-slate-900 hover:bg-amber-300 active:bg-amber-500 shadow-lg shadow-amber-400/25',
+    'bg-amber-400 text-black hover:bg-amber-300 active:bg-amber-500 shadow-lg shadow-amber-400/20',
   outline:
-    'bg-transparent text-sky-400 border-2 border-sky-400 hover:bg-sky-400/10 active:bg-sky-400/20',
+    'bg-transparent text-sky-400 border-2 border-sky-400/50 hover:bg-sky-400/10 active:bg-sky-400/20',
   ghost:
     'bg-transparent text-slate-300 hover:text-white hover:bg-white/5 active:bg-white/10',
 };
@@ -51,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({
   const reduceMotion = usePrefersReducedMotion();
 
   const baseStyles =
-    'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0b1e] disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed';
 
   const isDisabled = disabled || loading;
 

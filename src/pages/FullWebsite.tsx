@@ -2,6 +2,7 @@ import React from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import PageTransition from '../components/ui/PageTransition';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import FrameworkSection from './sections/FrameworkSection';
@@ -12,6 +13,7 @@ import ContactSection from './sections/ContactSection';
 
 /**
  * Full website page — contains all major sections.
+ * Dark cinematic aesthetic with Spline 3D elements.
  */
 const FullWebsite: React.FC = () => {
   return (
@@ -31,29 +33,31 @@ const FullWebsite: React.FC = () => {
 
       <Navbar />
 
-      <main id="main-content">
-        <HeroSection />
+      <PageTransition>
+        <main id="main-content">
+          <HeroSection />
 
-        <div className="section-divider" />
-        <AboutSection />
+          <div className="section-divider" />
+          <AboutSection />
 
-        <div className="section-divider" />
-        <FrameworkSection />
+          <div className="section-divider" />
+          <FrameworkSection />
 
-        <div className="section-divider" />
-        <WorkshopsSection />
+          <div className="section-divider" />
+          <WorkshopsSection />
 
-        <div className="section-divider" />
-        <PortfolioSection />
+          <div className="section-divider" />
+          <PortfolioSection />
 
-        <div className="section-divider" />
-        <LibrarySection />
+          <div className="section-divider" />
+          <LibrarySection />
 
-        <div className="section-divider" />
-        <ContactSection />
-      </main>
+          <div className="section-divider" />
+          <ContactSection />
+        </main>
 
-      <Footer />
+        <Footer />
+      </PageTransition>
     </HelmetProvider>
   );
 };

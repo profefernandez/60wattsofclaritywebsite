@@ -2,35 +2,35 @@
 
 /* ============================================================
    DESIGN TOKENS — 60 Watts of Clarity
-   WCAG 2.1 AAA compliant color palette
+   Dark cinematic aesthetic — WCAG 2.1 AA+ compliant
    ============================================================ */
 :root {
-  /* Background scale */
-  --color-bg-base: #0a0b1e;
-  --color-bg-surface: #111228;
-  --color-bg-elevated: #181932;
+  /* Background scale — pure black cinematic */
+  --color-bg-base: #000000;
+  --color-bg-surface: #0a0a0a;
+  --color-bg-elevated: #111111;
 
-  /* Brand accent — verified 7:1+ contrast on dark bg */
+  /* Brand accent — verified 4.5:1+ contrast on black bg */
   --color-accent-primary: #38bdf8;
   --color-accent-secondary: #fbbf24;
   --color-accent-green: #34d399;
 
-  /* Text */
+  /* Text — high contrast on pure black */
   --color-text-primary: #f8fafc;
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
 
   /* Interactive */
   --color-btn-primary-bg: #38bdf8;
-  --color-btn-primary-text: #0a0b1e;
+  --color-btn-primary-text: #000000;
   --color-btn-focus-ring: #38bdf8;
 
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.12);
+  /* Glass — enhanced frosted-glass */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* Typography */
-  --font-heading: "Playfair Display", Georgia, serif;
+  /* Typography — clean modern sans-serif */
+  --font-heading: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
@@ -77,8 +77,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
 }
 
@@ -102,7 +103,7 @@ img, video, canvas, svg {
   top: -100%;
   left: 1rem;
   background: var(--color-accent-primary);
-  color: #0a0b1e;
+  color: #000000;
   padding: 0.5rem 1rem;
   border-radius: 0 0 0.5rem 0.5rem;
   font-weight: 700;
@@ -112,13 +113,18 @@ img, video, canvas, svg {
 }
 .skip-link:focus { top: 0; }
 
-/* Glass card */
+/* Glass card — enhanced frosted-glass with glow hover */
 .glass-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
   border-radius: 1rem;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.08), 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Gradient text */
@@ -196,7 +202,7 @@ img, video, canvas, svg {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-bg-surface); }
+::-webkit-scrollbar-track { background: #000000; }
 ::-webkit-scrollbar-thumb { background: var(--color-accent-primary); border-radius: 3px; }
 
 /* Selection */
@@ -237,18 +243,18 @@ img, video, canvas, svg {
   50% { transform: translateY(-20px); opacity: 1; }
 }
 
-/* Hero gradient background */
+/* Hero gradient background — cinematic dark */
 .hero-bg {
-  background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 20%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
-              var(--color-bg-base);
+  background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(129, 140, 248, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+              #000000;
 }
 
-/* Divider */
+/* Divider — subtle cinematic */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.15), transparent);
   margin: 0;
 }
 
@@ -265,4 +271,45 @@ img, video, canvas, svg {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* ============================================================
+   SPOTLIGHT CURSOR — follows mouse with ambient glow
+   ============================================================ */
+.spotlight-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: 9998;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+/* Page transition wrapper */
+.page-transition {
+  min-height: 100vh;
+}
+
+/* Ambient gradient overlay for cinematic depth */
+.cinematic-gradient {
+  background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 0% 100%, rgba(129, 140, 248, 0.03) 0%, transparent 50%),
+              #000000;
+}
+
+/* Section fade-in on scroll */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

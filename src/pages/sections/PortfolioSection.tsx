@@ -19,7 +19,8 @@ const PortfolioSection: React.FC = () => {
     <section
       id="portfolio"
       aria-labelledby="portfolio-heading"
-      className="py-24 lg:py-32 bg-[#0a0b1e] relative overflow-hidden"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{ background: '#000000' }}
     >
       <div
         aria-hidden="true"
@@ -35,7 +36,7 @@ const PortfolioSection: React.FC = () => {
           <span className="section-eyebrow">Our Work</span>
           <h2
             id="portfolio-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight"
           >
             Impact{' '}
             <span className="gradient-text-warm">Portfolio</span>
@@ -59,8 +60,8 @@ const PortfolioSection: React.FC = () => {
               aria-pressed={activeCategory === cat}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer border ${
                 activeCategory === cat
-                  ? 'bg-sky-400 text-[#0a0b1e] border-sky-400 shadow-lg shadow-sky-400/25'
-                  : 'bg-transparent text-slate-400 border-white/10 hover:text-white hover:border-white/20'
+                  ? 'bg-sky-400 text-black border-sky-400 shadow-lg shadow-sky-400/20'
+                  : 'bg-transparent text-slate-400 border-white/[0.06] hover:text-white hover:border-white/15'
               }`}
             >
               {cat}
@@ -85,7 +86,7 @@ const PortfolioSection: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, delay: reduceMotion ? 0 : index * 0.08 }}
-              className="glass-card border border-white/10 hover:border-amber-400/30 p-6 transition-all duration-300 hover:translate-y-[-2px]"
+              className="glass-card border border-white/[0.06] hover:border-amber-400/20 p-6 transition-all duration-300 hover:translate-y-[-2px]"
               aria-label={`${item.title} — ${item.category}`}
             >
               {/* Header */}
@@ -97,7 +98,7 @@ const PortfolioSection: React.FC = () => {
                     </span>
                     <span className="text-xs text-slate-500">{item.year}</span>
                   </div>
-                  <h3 className="text-white font-heading font-bold text-xl">
+                  <h3 className="text-white font-heading font-medium text-xl tracking-tight">
                     {item.title}
                   </h3>
                 </div>

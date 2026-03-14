@@ -18,7 +18,8 @@ const FrameworkSection: React.FC = () => {
     <section
       id="framework"
       aria-labelledby="framework-heading"
-      className="py-24 lg:py-32 bg-[#0a0b1e] relative overflow-hidden"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{ background: '#000000' }}
     >
       {/* Background radial gradient */}
       <div
@@ -35,7 +36,7 @@ const FrameworkSection: React.FC = () => {
           <span className="section-eyebrow">Our Approach</span>
           <h2
             id="framework-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight"
           >
             The EEAEIE{' '}
             <span className="gradient-text-primary">Framework</span>
@@ -73,7 +74,7 @@ const FrameworkSection: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="text-white font-heading font-bold text-xl mb-2">
+              <h3 className="text-white font-heading font-medium text-xl mb-2 tracking-tight">
                 {pillar.title}
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">{pillar.description}</p>
@@ -92,7 +93,7 @@ const FrameworkSection: React.FC = () => {
                 Open Source
               </span>
             </div>
-            <h3 className="text-xl font-heading font-bold text-white mb-3">
+            <h3 className="text-xl font-heading font-medium text-white mb-3 tracking-tight">
               Free for Human Services Organizations
             </h3>
             <p className="text-slate-400 leading-relaxed text-sm">

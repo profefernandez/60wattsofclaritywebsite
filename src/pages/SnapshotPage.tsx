@@ -4,9 +4,14 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import ChatBot from '../components/chatbot/ChatBot';
 import AnimatedSection from '../components/ui/AnimatedSection';
+import SplineScene from '../components/ui/SplineScene';
+import PageTransition from '../components/ui/PageTransition';
 import Button from '../components/ui/Button';
 import { COMPANY, STATS, FRAMEWORK_PILLARS } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/useScrollAnimation';
+
+// Public Spline scene for snapshot 3D environment
+const SPLINE_SNAPSHOT_URL = 'https://prod.spline.design/PiBCriVGRNBFwXCp/scene.splinecode';
 
 const ArrowLeftIcon: React.FC = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5" aria-hidden="true">
@@ -43,7 +48,7 @@ const SnapshotPage: React.FC = () => {
       </a>
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0b1e]/95 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="section-container">
           <div className="flex items-center justify-between h-16">
             <Link
@@ -54,7 +59,7 @@ const SnapshotPage: React.FC = () => {
               <div className="w-7 h-7 rounded-lg bg-sky-500 flex items-center justify-center">
                 <BoltIcon className="w-3.5 h-3.5 text-white" />
               </div>
-              <span className="font-heading font-bold text-sm text-sky-400">60 Watts of Clarity</span>
+              <span className="font-heading font-light text-sm text-sky-400 tracking-wide">60 Watts of Clarity</span>
             </Link>
 
             <nav aria-label="Snapshot page navigation" className="flex items-center gap-3">
@@ -73,12 +78,30 @@ const SnapshotPage: React.FC = () => {
         </div>
       </header>
 
-      <main id="snapshot-main" className="pt-16 min-h-screen hero-bg">
-        <div className="section-container py-12">
+      <PageTransition>
+      <main id="snapshot-main" className="pt-16 min-h-screen relative overflow-hidden" style={{ background: '#000000' }}>
+        {/* Ambient 3D background for snapshot page */}
+        <div
+          className="absolute inset-0 opacity-15 pointer-events-none"
+          aria-hidden="true"
+        >
+          <SplineScene url={SPLINE_SNAPSHOT_URL} ariaLabel="" variant="default" className="w-full h-full" />
+        </div>
+
+        {/* Ambient radial gradients */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at 30% 20%, rgba(56,189,248,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(129,140,248,0.03) 0%, transparent 50%)',
+          }}
+        />
+
+        <div className="section-container py-12 relative z-10">
           {/* Page header */}
           <AnimatedSection className="text-center mb-12">
             <span className="section-eyebrow">Strategic Snapshot</span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-light text-white mb-4 tracking-tight">
               <span className="gradient-text-primary">60 Watts of Clarity</span>
               <br />
               <span className="text-slate-300 text-2xl sm:text-3xl font-normal">at a Glance</span>
@@ -94,7 +117,7 @@ const SnapshotPage: React.FC = () => {
               {/* Mission */}
               <AnimatedSection>
                 <div className="glass-card border border-sky-400/20 p-6">
-                  <h2 className="text-lg font-heading font-bold text-white mb-3 flex items-center gap-2">
+                  <h2 className="text-lg font-heading font-medium text-white mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-sky-400 inline-block" aria-hidden="true" />
                     Mission
                   </h2>
@@ -104,7 +127,7 @@ const SnapshotPage: React.FC = () => {
 
               {/* Key stats */}
               <AnimatedSection delay={0.1}>
-                <h2 className="text-lg font-heading font-bold text-white mb-4">
+                <h2 className="text-lg font-heading font-medium text-white mb-4">
                   Impact Numbers
                 </h2>
                 <div
@@ -122,7 +145,7 @@ const SnapshotPage: React.FC = () => {
                       transition={{ duration: 0.4, delay: i * 0.07 }}
                       className="glass-card border border-white/10 p-4 text-center"
                     >
-                      <p className="text-2xl font-heading font-bold gradient-text-primary mb-1">
+                      <p className="text-2xl font-heading font-medium gradient-text-primary mb-1">
                         {value}
                       </p>
                       <p className="text-xs text-slate-400">{label}</p>
@@ -133,7 +156,7 @@ const SnapshotPage: React.FC = () => {
 
               {/* Framework quick view */}
               <AnimatedSection delay={0.2}>
-                <h2 className="text-lg font-heading font-bold text-white mb-4">
+                <h2 className="text-lg font-heading font-medium text-white mb-4">
                   The EEAEIE Framework
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -151,7 +174,7 @@ const SnapshotPage: React.FC = () => {
 
               {/* What we offer quick cards */}
               <AnimatedSection delay={0.3}>
-                <h2 className="text-lg font-heading font-bold text-white mb-4">
+                <h2 className="text-lg font-heading font-medium text-white mb-4">
                   What We Offer
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -209,7 +232,7 @@ const SnapshotPage: React.FC = () => {
             <div className="xl:col-span-2">
               <AnimatedSection delay={0.15}>
                 <div className="sticky top-24">
-                  <h2 className="text-lg font-heading font-bold text-white mb-4">
+                  <h2 className="text-lg font-heading font-medium text-white mb-4">
                     Ask Clara — AI Assistant
                   </h2>
                   <div style={{ height: '580px' }}>
@@ -225,7 +248,8 @@ const SnapshotPage: React.FC = () => {
       {/* Footer mini */}
       <footer
         role="contentinfo"
-        className="bg-[#08091a] border-t border-white/10 py-8"
+        className="border-t border-white/[0.06] py-8"
+        style={{ background: '#000000' }}
       >
         <div className="section-container flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
@@ -238,6 +262,7 @@ const SnapshotPage: React.FC = () => {
           </Link>
         </div>
       </footer>
+      </PageTransition>
     </HelmetProvider>
   );
 };
